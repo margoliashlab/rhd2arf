@@ -146,7 +146,7 @@ for i = 1:length(all_channels)
                     '/' ch_name];
             else
                 datasetnames{group_idx,i} = ['/' groupname '_' sprintf('%04d',group_idx-1)...
-                    '/' ch_name '_' ch_name];
+                    '/' ch_name '_' ch_num];
             end
             arfcreate(arf_filename, datasetnames{group_idx,i}, dset_size, ...
                 'arf_datatype', str2double(datatype), 'sampling_rate', ...
@@ -160,7 +160,12 @@ for i = 1:length(all_channels)
         end
         
     else
-        datasetnames{i} = ['/' groupname '/' ch_name '_' ch_num];
+        if isempty(ch_num)
+            datasetnames{i} = ['/' groupname '/' ch_name];
+        else
+            datasetnames{i} = ['/' groupname '/' ch_name '_' ch_num];
+        end
+        
         arfcreate(arf_filename, datasetnames{i}, dset_size, ...
             'arf_datatype', str2double(datatype), 'sampling_rate', ...
             frequency_parameters.amplifier_sample_rate);
