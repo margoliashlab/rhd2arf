@@ -14,7 +14,7 @@ dirname = pwd();
 %dirname = ['k405/' directories{arf_idx}];
 
 %arf_filename = ['k405_' strrep(directories{arf_idx},'/','_') '.arf'];
-groupname = 'evoked';
+groupname = 'raw';
 pulse_channel = 'ADC-06';
 separate_trials = false;
 prestim = 2;
